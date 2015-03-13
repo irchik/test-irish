@@ -18,8 +18,13 @@ class LoginPage
     click_button 'Log in'
   end
 
-  def fill_and_submit_form(email, password)
+  def fill_form(email, password)
     fill_email_field(email)
     fill_password_field(password)
+  end
+
+  def fill_and_submit_form(email, password)
+    fill_form(email, password)
+    submit_form
   end
 end
