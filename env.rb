@@ -1,13 +1,9 @@
-require "Capybara"
-require "Capybara/cucumber"
-require "rspec"
+require 'Capybara'
+require 'Capybara/cucumber'
+require 'rspec'
 
-include RSpec::Matchers
-
-Capybara.configure do |capybara|
-
-  Capybara.register_driver :selenium_ff do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :firefox)
+Capybara.configure do |_|
+  Capybara.register_driver :remote_browser do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :ie)
   end
-
 end

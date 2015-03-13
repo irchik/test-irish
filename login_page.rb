@@ -1,23 +1,25 @@
-require_relative '../pages/web_page'
-require_relative '../pages/home_page'
-require 'capybara/rspec'
-
-
 class LoginPage
-  include Capybara::DSL
+  PAGE_URL = 'http://howitzer.strongqa.com/users/sign_in'
 
   def visit_page
-    visit 'http://howitzer.strongqa.com/users/sign_in'
+    visit PAGE_URL
     self
   end
 
-  def fill_form(email,password)
-    fill_in 'user_email', with: email
-    fill_in 'user_password', with: password
-    end
+  def fill_email_field(email)
+    fill_in('user_email', with: email)
+  end
+
+  def fill_password_field(password)
+    fill_in('user_password', with: password)
+  end
 
   def submit_form
     click_button 'Log in'
   end
-end
 
+  def fill_and_submit_form(email, password)
+    fill_email_field(email)
+    fill_password_field(password)
+  end
+end
